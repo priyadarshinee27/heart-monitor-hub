@@ -1,158 +1,114 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 222 47% 11%;
-    --foreground: 0 0% 95%;
-
-    --card: 222 47% 15%;
-    --card-foreground: 0 0% 95%;
-
-    --popover: 222 47% 15%;
-    --popover-foreground: 0 0% 95%;
-
-    --primary: 196 71% 60%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 280 46% 54%;
-    --secondary-foreground: 0 0% 100%;
-
-    --muted: 223 47% 20%;
-    --muted-foreground: 215 25% 65%;
-
-    --accent: 342 89% 70%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 223 47% 20%;
-    --input: 223 47% 20%;
-    --ring: 196 71% 60%;
-
-    --radius: 0.75rem;
-
-    --sidebar-background: 222 47% 8%;
-    --sidebar-foreground: 0 0% 90%;
-    --sidebar-primary: 196 71% 60%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 223 47% 15%;
-    --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 223 47% 15%;
-    --sidebar-ring: 196 71% 60%;
-  }
-
-  .glass {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  }
-
-  .neo {
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1), -5px -5px 10px rgba(255, 255, 255, 0.05);
-  }
-  
-  @keyframes fadeInUp {
-    0% {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  .animate-fade-in-up {
-    animation: fadeInUp 0.5s ease-out forwards;
-  }
-  
-  .delay-100 {
-    animation-delay: 0.1s;
-  }
-  
-  .delay-200 {
-    animation-delay: 0.2s;
-  }
-  
-  .delay-300 {
-    animation-delay: 0.3s;
-  }
-  
-  .delay-400 {
-    animation-delay: 0.4s;
-  }
-  
-  .delay-500 {
-    animation-delay: 0.5s;
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 6.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+    --radius: 0.5rem;
+    
+    /* Dashboard colors */
+    --dashboard-pink: 345 83% 66%;
+    --dashboard-blue: 190 95% 60%;
+    --dashboard-purple: 262 83% 74%;
+    --dashboard-green: 160 84% 39%;
+    --dashboard-orange: 32 100% 65%;
+    --dashboard-red: 0 84% 60%;
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
+@layer components {
+  .data-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-6;
   }
-
-  body {
-    @apply bg-background text-foreground font-[Inter];
+  
+  .shadow-neo {
+    @apply shadow-[0_4px_15px_rgba(0,0,0,0.1)];
+  }
+  
+  .heart-beat {
+    animation: heart-beat 1.4s ease infinite;
+  }
+  
+  .circle-progress-container {
+    @apply relative w-[120px] h-[120px] flex items-center justify-center;
+  }
+  
+  .circle-progress {
+    @apply absolute top-0 left-0 transform -rotate-90;
+  }
+  
+  .circle-bg {
+    @apply fill-none stroke-current stroke-[6px] text-muted/20;
+  }
+  
+  .circle-progress-value {
+    @apply fill-none stroke-[6px] transition-all duration-300 ease-in-out;
+  }
+  
+  .progress-text {
+    @apply absolute inset-0 flex flex-col items-center justify-center;
   }
 }
 
-.heart-beat {
-  animation: heartbeat 1.5s ease-in-out infinite;
-}
-
-@keyframes heartbeat {
+@keyframes heart-beat {
   0% { transform: scale(1); }
-  14% { transform: scale(1.1); }
+  14% { transform: scale(1.2); }
   28% { transform: scale(1); }
   42% { transform: scale(1.2); }
   70% { transform: scale(1); }
-  100% { transform: scale(1); }
 }
 
-.circle-progress-container {
-  position: relative;
-  width: 120px;
-  height: 120px;
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.circle-progress {
-  transform: rotate(-90deg);
-  transform-origin: 50% 50%;
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
 }
 
-.circle-bg {
-  fill: none;
-  stroke: rgba(255, 255, 255, 0.1);
-  stroke-width: 8;
+.animation-delay-100 {
+  animation-delay: 0.1s;
 }
 
-.circle-progress-value {
-  fill: none;
-  stroke-linecap: round;
-  stroke-width: 8;
-  transition: stroke-dashoffset 0.5s ease-out;
+.animation-delay-200 {
+  animation-delay: 0.2s;
 }
 
-.progress-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 1.25rem;
-  font-weight: 600;
+.animation-delay-300 {
+  animation-delay: 0.3s;
 }
 
-.data-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+.animation-delay-400 {
+  animation-delay: 0.4s;
+}
+
+.animation-fill-mode-forwards {
+  animation-fill-mode: forwards;
 }
