@@ -1,11 +1,38 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React from "react";
+import Header from "@/components/Header";
+import HeartRateDetail from "@/components/HeartRateDetail";
+import AccelerationMonitor from "@/components/AccelerationMonitor";
+import HeartRateMonitor from "@/components/HeartRateMonitor";
+import VehicleIncidentReport from "@/components/VehicleIncidentReport";
+import HeartRateGraph from "@/components/HeartRateGraph";
+import VitalSigns from "@/components/VitalSigns";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <div className="min-h-screen bg-background text-foreground">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6">
+        <Header />
+        
+        <main>
+          <div className="data-grid mb-6">
+            <HeartRateMonitor />
+            <VitalSigns />
+          </div>
+          
+          <HeartRateDetail />
+          
+          <div className="data-grid my-6">
+            <AccelerationMonitor />
+            <VehicleIncidentReport />
+          </div>
+          
+          <HeartRateGraph />
+        </main>
+        
+        <footer className="py-6 text-center text-xs text-muted-foreground">
+          <p>Health Monitor Dashboard • Real-time data visualization</p>
+        </footer>
       </div>
     </div>
   );
